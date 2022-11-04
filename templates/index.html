@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="./static/css/style.css">
+{% endblock %}
+
+{% block title %} WhatsApp Wordcloud Generator {% endblock %}
+
+{% block content %}
+		{% if result_after_pred %}
+			<div class="container col-md-6">
+				<div class="alert alert-success" role="alert">
+					The start ups have Successfully been sorted.
+				</div>
+				<hr>
+				<h2>Download File:</h2><br>
+				<button href="{{ url_for('.download_file') }}">Download</button>
+				<br><br>
+				<div class="display_prediction">
+					{% for table in tables %}
+			            {{titles[loop.index]}}
+			            {{ table|safe }}
+					{% endfor %}
+				</div>
+				<hr>
+				<button type="button" class="btn btn-danger" onclick="window.location.href='{{ url_for( 'index') }}'">Back</button>
+			</div>
+
+		{% else %}
+			<div class="container col-md-6">
+				{% if date_error %}
+					<div class="alert alert-warning" role="alert">
+						Start date can not be greater than end date.
+					</div>
+				{% endif %} 
+				{% if incorrect_file_type %}
+					<div class="alert alert-warning" role="alert">
+						Incorrect file Type:
+						    Supported file types are ".csv", ".xlsx".
+					</div>
+				{% endif %}
+
+
+				<form action = "/" method = "POST" enctype = "multipart/form-data">
+					<input class="btn btn-light" type = "file" name = "file" />
+					<br><br>
+					<button type="submit" class="btn btn-primary">Generate</button>
+				</form>
+						</div>
+					</form>
+			</div>
+		{% endif %}
+{% endblock %}
