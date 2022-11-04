@@ -1,6 +1,6 @@
 # Wordcloud Generator
 
-Live: [https://wa-wc.herokuapp.com/](https://wa-wc.herokuapp.com/)
+Live: [https://tgs-shortlisting.herokuapp.com/](https://tgs-shortlisting.herokuapp.com/)
 
 *Works only for chats retrived using WhatsApp installed on an Android device*
 
@@ -16,7 +16,7 @@ Please ensure you have the following installed
 
 Follow the steps below once the above requirements are satisfied
 
-- Clone the repo using `git clone https://github.com/deutranium/wordclouds.git`
+- Clone the repo using `git clone https://github.com/RishKhanna/StartUp_pred.git`
 
 - `cd` into the repo and install the required modules using `pip3 install -r requirements.txt`
 
@@ -25,19 +25,3 @@ Follow the steps below once the above requirements are satisfied
 ## To repo
 
 - Use `git push origin master` to push your changes
-
-## Staging Area
-
-To test the app on server before pushing it to final phase
-
-- Add staging app to repo using `git remote add stage git@heroku.com:wordcloud-flask-stage.git`. This might get an error if the SSH keys of your machine aren't saved on the server
-
-- To push to staging, use `git push stage master`
-
-## Production Area
-
-To test the app on server before pushing it to final phase
-
-- Add staging app to repo using `git remote add pro git@heroku.com:wa-wc.git`. This might get an error if the SSH keys of your machine aren't saved on the server
-
-- To push to production, use `git push pro master`
