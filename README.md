@@ -1,18 +1,19 @@
-# Wordcloud Generator
+# TGS Shortlisting
 
 Live: [https://tgs-shortlisting.herokuapp.com/](https://tgs-shortlisting.herokuapp.com/)
 
-*Works only for chats retrived using WhatsApp installed on an Android device*
 
 ## Setup
 
 Please ensure you have the following installed
 
-- Flask>=1.1.1
+- Flask>=2.2.2
 
-- Python>=3.8.1
+- Pandas>=1.5.1
 
-- pip3 >= 9.0.1
+- gunicorn>=20.0.4
+
+- Python>=3.9.12
 
 Follow the steps below once the above requirements are satisfied
 
