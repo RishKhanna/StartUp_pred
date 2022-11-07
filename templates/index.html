@@ -14,7 +14,7 @@
 				</div>
 				<hr>
 				<h2>Download File:</h2><br>
-				<button href="{{ url_for('.download_file') }}">Download</button>
+				<button onclick="window.location.href='{{ url_for('.download_file') }}'">Download</button>
 				<br><br>
 				<div class="display_prediction">
 					{% for table in tables %}
