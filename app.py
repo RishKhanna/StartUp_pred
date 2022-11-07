@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, send_file
 import pandas as pd
+from PySripts.preprocessing import *
 from PySripts.pandas_implementation import *
 from PySripts.RandomForest_Predict import *
 
@@ -19,13 +20,14 @@ def upload_file():
 		decoded = f.read()
 		# Converts the string into a Pandas DataFrame
 		Data_extracted = input_to_df(decoded, f.filename)
+		del f
 
 		# Returns a Warning if the DataFrame is empty, given all input conditions 
 		if(len(Data_extracted)==0):
 			return render_template("index.html", incorrect_file_type=1)
 		
 		# Preprocessing the input data to fit in our model.
-		###################
+		Data_extracted = find_cols(Data_extracted)
 
 		# Now we have data processed such that we can use it for prediction.
 		Data_extracted['Predict'] = RF_Predict(Data_extracted)
