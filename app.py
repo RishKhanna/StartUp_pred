@@ -27,10 +27,12 @@ def upload_file():
 			return render_template("index.html", incorrect_file_type=1)
 		
 		# Preprocessing the input data to fit in our model.
+		name_col = Data_extracted["Startup Name"]
 		Data_extracted = find_cols(Data_extracted)
 
 		# Now we have data processed such that we can use it for prediction.
 		Data_extracted['Predict'] = RF_Predict(Data_extracted)
+		Data_extracted["Company Name"] = pd.DataFrame(name_col)
 
 		# Update index.html to show few rows of the DataFrame and to allow downloading the 
 		# generated csv file of outputs.
