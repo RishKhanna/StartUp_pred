@@ -36,7 +36,8 @@ def upload_file():
 
 		# Update index.html to show few rows of the DataFrame and to allow downloading the 
 		# generated csv file of outputs.
-		output_df = Data_extracted[["Company Name", "Predict"]]
+		output_df = Scoring_top3(Data_extracted).sort_values(by ='Score', ascending = 0)
+		output_df = output_df.reset_index(drop=True)
 		output_df.to_csv("./static/result.csv", index=False)
 		print(output_df.head())
 		return render_template('index.html', result_after_pred=1,tables=[output_df.to_html(classes='data')], titles=output_df.columns.values)
