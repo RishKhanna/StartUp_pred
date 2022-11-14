@@ -1,4 +1,11 @@
 import pandas as pd
+from statistics import median
+
+def normalize(in_df):
+  med_word_brief = median(in_df["[Brief] word count"])
+  in_df["[Brief] word count"] = in_df["[Brief] word count"]/med_word_brief
+  return in_df
+
 
 def makes_sense(in_str):
   """
@@ -122,4 +129,7 @@ def find_cols(in_df):
       else:
         flag=1
     fin["Product is not live yet"].append(flag)
-  return pd.DataFrame(fin)
+
+  return normalize(pd.DataFrame(fin))
+
+

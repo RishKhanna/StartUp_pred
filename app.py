@@ -27,14 +27,17 @@ def upload_file():
 			return render_template("index.html", incorrect_file_type=1)
 		
 		# Preprocessing the input data to fit in our model.
+		name_col = Data_extracted["Startup Name"]
 		Data_extracted = find_cols(Data_extracted)
 
 		# Now we have data processed such that we can use it for prediction.
 		Data_extracted['Predict'] = RF_Predict(Data_extracted)
+		Data_extracted["Company Name"] = pd.DataFrame(name_col)
 
 		# Update index.html to show few rows of the DataFrame and to allow downloading the 
 		# generated csv file of outputs.
-		output_df = Data_extracted[["Company Name", "Predict"]]
+		output_df = Scoring_top3(Data_extracted).sort_values(by ='Score', ascending = 0)
+		output_df = output_df.reset_index(drop=True)
 		output_df.to_csv("./static/result.csv", index=False)
 		print(output_df.head())
 		return render_template('index.html', result_after_pred=1,tables=[output_df.to_html(classes='data')], titles=output_df.columns.values)

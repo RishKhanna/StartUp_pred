@@ -10,5 +10,23 @@ def RF_Predict(in_df):
 	    "[Traction] More than 2","[Traction] makes sense"]
 	model = pkl.load(open("./static/Model.pkl",'rb'))
 	fin = model.predict(in_df[X])
-	fin = ["Yes" if i==1 else "No" for i in fin]
+	# fin = ["Yes" if i==1 else "No" for i in fin]
 	return fin
+
+
+
+def Scoring_top3(in_df):
+	"""
+	prediction: 33.33%
+	Top3 features: B2C + Bootstrap + Wordcount = 66.66%
+	"""
+	fin_score = []
+	# normalise word count
+	max_count = max(in_df["[Brief] word count"])
+	in_df["[Brief] word count"] = in_df["[Brief] word count"]/max_count
+	for index, i in in_df.iterrows():
+		score = int(i["Predict"])/3
+		score += (int(i["B2B"]) + int(i["Bootstrapped"]) + int(i["[Brief] word count"]))*(2/9)
+		fin_score.append(score)
+	in_df["Score"] = fin_score
+	return in_df[["Company Name", "Predict", "Score"]]
