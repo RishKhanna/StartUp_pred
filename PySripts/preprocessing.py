@@ -2,6 +2,10 @@ import pandas as pd
 from statistics import median
 
 def normalize(in_df):
+  """
+  takes as input the preprocessed dataframe and normalizes the column containing the venture's 
+  brief's word count.   
+  """
   med_word_brief = median(in_df["[Brief] word count"])
   in_df["[Brief] word count"] = in_df["[Brief] word count"]/med_word_brief
   return in_df
