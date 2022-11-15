@@ -38,7 +38,8 @@ The central python file that controls the working of the website is `app.py`, wh
 The files in the subdirectory `PySripts` are the three python files that encompass the main utility of the website, which is to preprocess the data fed into the website in the `csv` format and predict the success of the enlisted ventures using our pre-trained model. 
 
 - `pandas_implementation.py`: takes input filename and if it posesses filetype: csv, converts it into a `pandas.DataFrame` object for further processing.
-- `preprocessing.py`: 
+- `preprocessing.py`: contains 3 functions that perform normalization (`normalize`), finds if a brief text makes sense (`makes_sense`) and a main function `find_cols` which takes as input the output of `pandas_implementation.py` with columns in the format of the current application form for TGS-TiE 2022, and converts it into a `pandas.DataFrame` object with the columns supported by the model.
+- `RandomForest_Predict.py` 
 
 
 
