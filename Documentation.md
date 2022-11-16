@@ -39,7 +39,8 @@ The files in the subdirectory `PySripts` are the three python files that encompa
 
 - `pandas_implementation.py`: takes input filename and if it posesses filetype: csv, converts it into a `pandas.DataFrame` object for further processing.
 - `preprocessing.py`: contains 3 functions that perform normalization (`normalize`), finds if a brief text makes sense (`makes_sense`) and a main function `find_cols` which takes as input the output of `pandas_implementation.py` with columns in the format of the current application form for TGS-TiE 2022, and converts it into a `pandas.DataFrame` object with the columns supported by the model.
-- `RandomForest_Predict.py` 
+- `RandomForest_Predict.py`: imports scikit learn and the stored Random Forest model file that has been trained to a recall of 77.5, precision of 82.0 and F1 score of 85.3. This is then fed with the preprocessed  `pandas.DataFrame` and then the results are shown in the webapp.
+
 
 
 
